@@ -1,30 +1,68 @@
-In this DevOps task, you need to build and deploy a full-stack CRUD application using the MEAN stack (MongoDB, Express, Angular 15, and Node.js). The backend will be developed with Node.js and Express to provide REST APIs, connecting to a MongoDB database. The frontend will be an Angular application utilizing HTTPClient for communication.  
+Project Summary
 
-The application will manage a collection of tutorials, where each tutorial includes an ID, title, description, and published status. Users will be able to create, retrieve, update, and delete tutorials. Additionally, a search box will allow users to find tutorials by title.
+This project demonstrates end-to-end deployment of a full-stack MEAN (MongoDB, Express, Angular, Node.js) application using Docker, GitHub Actions CI/CD, AWS EC2, and Nginx reverse proxy.
 
-## Project setup
+The objective was to containerize, automate, and deploy the application in a production-style environment.
 
-### Node.js Server
+Frontend: Angular
 
-cd backend
+Backend: Node.js + Express
 
-npm install
+Database: MongoDB
 
-You can update the MongoDB credentials by modifying the `db.config.js` file located in `app/config/`.
+Containerization: Docker & Docker Compose
 
-Run `node server.js`
+CI/CD: GitHub Actions
 
-### Angular Client
+Cloud: AWS EC2 (Ubuntu)
 
-cd frontend
+Reverse Proxy: Nginx
 
-npm install
+Containerization
 
-Run `ng serve --port 8081`
+Separate Dockerfiles for frontend and backend
 
-You can modify the `src/app/services/tutorial.service.ts` file to adjust how the frontend interacts with the backend.
+MongoDB using official Docker image
 
-Navigate to `http://localhost:8081/`
+Multi-container setup managed via Docker Compose
+
+Only Nginx exposed publicly (port 80)
+
+CI/CD Pipeline
+
+GitHub Actions pipeline:
+
+Triggered on push to main
+
+Builds Docker images
+
+Pushes images to Docker Hub
+
+EC2 pulls latest images and restarts containers
+
+Deployed on AWS EC2 (t2.micro)
+
+Configured Security Group for HTTP (port 80)
+
+Dockerfiles (frontend & backend)
+
+docker-compose.yml
+
+nginx.conf
+
+GitHub Actions workflow
+
+Deployment screenshots
 
 
-Pipeline test
+Outcome
+
+Fully containerized application
+
+CI/CD automated
+
+Production-style reverse proxy setup
+
+Cloud deployment successful
+
+Infrastructure available for live demo
